@@ -1,0 +1,475 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<h2 class="sr-only">AGWANE Capital Portfolio Company Performance Analysis — PE value creation tracking EBITDA bridge exit readiness dashboard</h2>
+<style>
+:root{--bg:#07091c;--s0:#0b1025;--s1:#101828;--s2:#182038;--bd:rgba(255,255,255,.07);--bs:rgba(255,255,255,.14);--ba:#c9a453;--tt:#dcd9d0;--t2:#7090b8;--tm:#3a4e6a;--ta:#c9a453;--ts:#1ec87a;--tw:#e8a020;--td:#e04040;--rr:7px;--mn:'JetBrains Mono',monospace;--ss:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tt);font-family:var(--ss);font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 0 13px;border-bottom:1px solid var(--bd);margin-bottom:14px}
+.bmk{color:var(--ta);font-size:15px;margin-right:7px}.bsub{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);font-weight:500}
+.dtl{font-size:17px;font-weight:300;color:var(--tt);margin:3px 0 0}.dsb{font-size:10.5px;color:var(--tm);font-family:var(--mn);margin-top:2px}
+.xrow{display:flex;gap:7px;align-items:center;flex-shrink:0;padding-top:2px}
+.xb{background:var(--s1);border:.5px solid var(--bs);border-radius:var(--rr);padding:5px 12px;cursor:pointer;font-size:12px;color:var(--tt);font-family:var(--ss);font-weight:500;transition:all .15s;white-space:nowrap}
+.xb:hover{background:var(--s2);border-color:var(--ba);color:var(--ta)}
+.xb.gold{background:rgba(201,164,83,.1);border:.5px solid rgba(201,164,83,.3);color:var(--ta)}.xb.gold:hover{background:rgba(201,164,83,.2)}
+.xb:disabled{opacity:.4;cursor:wait}
+.bdg{font-size:10px;font-family:var(--mn);padding:2px 9px;border-radius:3px;letter-spacing:.07em;font-weight:600;background:rgba(201,164,83,.1);color:var(--ta);border:.5px solid rgba(201,164,83,.22)}
+.kbar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.kc{background:var(--s0);border:.5px solid var(--bd);border-radius:var(--rr);padding:11px 13px;transition:border-color .2s}.kc:hover{border-color:var(--bs)}.kc.gl{border-left:2px solid var(--ta)}.kc.rl{border-left:2px solid var(--td)}
+.kv{font-size:18px;font-weight:400;font-family:var(--mn);line-height:1.1;color:var(--tt)}.kv.g{color:var(--ts)}.kv.a{color:var(--ta)}.kv.r{color:var(--td)}
+.kl{font-size:10px;color:var(--tm);margin-top:4px;letter-spacing:.04em;font-family:var(--mn)}
+.tabs{display:flex;border-bottom:.5px solid var(--bd);margin-bottom:14px;overflow-x:auto}
+.tb{background:none;border:none;border-bottom:2px solid transparent;padding:8px 15px;cursor:pointer;font-size:12px;color:var(--t2);font-family:var(--ss);font-weight:500;white-space:nowrap;transition:all .15s}
+.tb:hover{color:var(--tt)}.tb.on{color:var(--tt);border-bottom-color:var(--ta)}
+.sl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:.09em;font-family:var(--mn);font-weight:500;margin:0 0 9px}
+.ft{width:100%;border-collapse:collapse;font-size:12px}
+.ft th{text-align:right;padding:5px 9px;font-size:10px;color:var(--tm);font-weight:500;border-bottom:.5px solid var(--bs);font-family:var(--mn);white-space:nowrap}
+.ft th.l,.ft td.l{text-align:left}
+.ft td{text-align:right;padding:5px 9px;border-bottom:.5px solid var(--bd);font-family:var(--mn);font-size:11.5px;white-space:nowrap;color:var(--tt)}
+.ft td.l{color:var(--t2);font-family:var(--ss);font-size:12px}
+.ft tr.sub td{border-top:.5px solid var(--bs);font-weight:600;background:rgba(255,255,255,.025)}
+.ft tr:hover td{background:rgba(255,255,255,.02)}
+.inp{background:var(--s1);border:.5px solid var(--bs);border-radius:5px;padding:3px 7px;color:var(--tt);font-size:11.5px;font-family:var(--mn);width:100%;transition:border-color .15s;text-align:right}
+.inp:focus{outline:none;border-color:var(--ba)}.inp.l{text-align:left;font-family:var(--ss);font-size:12px}
+.fl{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}.fl label{font-size:10.5px;color:var(--t2)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.co{background:var(--s0);border:.5px solid var(--bd);border-radius:var(--rr);padding:13px}
+.co-hd{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ta);font-family:var(--mn);margin-bottom:10px}
+.ch{position:relative;height:200px;margin-top:14px}
+.rag-g{background:rgba(30,200,122,.12);color:var(--ts);border:.5px solid rgba(30,200,122,.3);font-size:10px;font-family:var(--mn);padding:2px 8px;border-radius:3px;font-weight:600;white-space:nowrap}
+.rag-a{background:rgba(232,160,32,.12);color:var(--tw);border:.5px solid rgba(232,160,32,.3);font-size:10px;font-family:var(--mn);padding:2px 8px;border-radius:3px;font-weight:600;white-space:nowrap}
+.rag-r{background:rgba(224,64,64,.12);color:var(--td);border:.5px solid rgba(224,64,64,.3);font-size:10px;font-family:var(--mn);padding:2px 8px;border-radius:3px;font-weight:600;white-space:nowrap}
+.pbar{height:5px;background:var(--s2);border-radius:3px;overflow:hidden;margin-top:4px}
+.pbar-fill{height:100%;border-radius:3px;transition:width .3s}
+.aib{background:rgba(201,164,83,.09);border:.5px solid rgba(201,164,83,.28);border-radius:var(--rr);padding:8px 14px;cursor:pointer;font-size:12.5px;color:var(--ta);font-weight:500;font-family:var(--ss);width:100%;transition:all .15s}
+.aib:hover{background:rgba(201,164,83,.18)}.aib:disabled{opacity:.4;cursor:wait}
+.mob{background:var(--s0);border:.5px solid var(--bd);border-radius:var(--rr);padding:14px;font-size:12.5px;line-height:1.8;color:var(--t2);white-space:pre-wrap;font-family:var(--ss);display:none;margin-top:12px;min-height:120px}
+.qac{background:var(--s0);border:.5px solid var(--bd);border-radius:var(--rr);padding:12px 14px;margin-bottom:8px;font-size:12.5px;line-height:1.7;color:var(--t2)}
+.qaq{color:var(--ta);font-size:10px;font-family:var(--mn);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;font-weight:500}
+.qin{width:100%;background:var(--s1);border:.5px solid var(--bs);border-radius:var(--rr);padding:9px 11px;color:var(--tt);font-size:13px;font-family:var(--ss);resize:vertical;height:80px;line-height:1.5}.qin:focus{outline:none;border-color:var(--ba)}
+.qkb{background:var(--s1);border:.5px solid var(--bd);border-radius:5px;padding:5px 10px;cursor:pointer;font-size:11.5px;color:var(--t2);font-family:var(--ss);transition:all .15s}
+.qkb:hover{border-color:var(--ba);color:var(--ta)}
+.spin{display:inline-block;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+
+<div style="padding:.75rem 0">
+<div class="hdr">
+  <div>
+    <div><span class="bmk">◆</span><span class="bsub">AGWANE CAPITAL · PE PORTFOLIO</span></div>
+    <div class="dtl">Portfolio Company Performance Analysis</div>
+    <div class="dsb" id="dsb">Loading dashboard…</div>
+  </div>
+  <div class="xrow">
+    <button class="xb" onclick="exportXL()">↓ Excel</button>
+    <button class="xb gold" id="wbtn" onclick="exportWD()">↓ Word</button>
+    <span class="bdg">PORTFOLIO</span>
+  </div>
+</div>
+
+<div class="kbar" id="kbar"></div>
+
+<nav class="tabs">
+  <button class="tb on" onclick="showTab('d',this)">Dashboard</button>
+  <button class="tb" onclick="showTab('b',this)">EBITDA bridge</button>
+  <button class="tb" onclick="showTab('v',this)">Value creation</button>
+  <button class="tb" onclick="showTab('x',this)">Exit readiness</button>
+  <button class="tb" onclick="showTab('ai',this)">✦ AI analysis</button>
+</nav>
+
+<!-- DASHBOARD TAB -->
+<div id="td">
+  <div class="g2" style="margin-bottom:14px">
+    <div class="co">
+      <div class="co-hd">◆ Company & entry</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="fl" style="grid-column:1/-1"><label>Company name</label><input class="inp l" id="c-nm" value="Kalahari Mfg Ltd" oninput="rc()"></div>
+        <div class="fl"><label>Entry year</label><input class="inp" id="e-yr" value="2022" oninput="rc()"></div>
+        <div class="fl"><label>Current year</label><input class="inp" id="c-yr" value="2024" oninput="rc()"></div>
+        <div class="fl"><label>Entry EV (BWP M)</label><input class="inp" id="e-ev" value="585" oninput="rc()"></div>
+        <div class="fl"><label>Entry equity (BWP M)</label><input class="inp" id="e-eq" value="210" oninput="rc()"></div>
+        <div class="fl"><label>Entry revenue (BWP M)</label><input class="inp" id="e-rv" value="450" oninput="rc()"></div>
+        <div class="fl"><label>Entry EBITDA (BWP M)</label><input class="inp" id="e-eb" value="90" oninput="rc()"></div>
+      </div>
+    </div>
+    <div class="co">
+      <div class="co-hd">◎ Performance snapshot</div>
+      <div id="snap-panel" style="font-size:12px;line-height:2.1;color:var(--t2)">Calculating…</div>
+    </div>
+  </div>
+  <p class="sl">Actual vs. plan (BWP M)</p>
+  <div style="overflow-x:auto">
+    <table class="ft">
+      <thead><tr><th class="l" style="min-width:130px">Metric</th><th>Entry (Y0)</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr></thead>
+      <tbody>
+        <tr><td class="l" style="color:var(--ta);font-weight:500">Revenue — Plan</td><td><input class="inp" id="p-rv0" value="450" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-rv1" value="486" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-rv2" value="524" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-rv3" value="567" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-rv4" value="612" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-rv5" value="661" oninput="rc()" style="width:60px"></td></tr>
+        <tr><td class="l">Revenue — Actual</td><td><input class="inp" id="a-rv0" value="450" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-rv1" value="498" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-rv2" value="512" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-rv3" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td><td><input class="inp" id="a-rv4" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td><td><input class="inp" id="a-rv5" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td></tr>
+        <tr class="sub"><td class="l" style="color:var(--ta);font-weight:500">EBITDA — Plan</td><td><input class="inp" id="p-eb0" value="90" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-eb1" value="102" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-eb2" value="114" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-eb3" value="130" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-eb4" value="147" oninput="rc()" style="width:60px"></td><td><input class="inp" id="p-eb5" value="165" oninput="rc()" style="width:60px"></td></tr>
+        <tr><td class="l">EBITDA — Actual</td><td><input class="inp" id="a-eb0" value="90" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-eb1" value="105" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-eb2" value="108" oninput="rc()" style="width:60px"></td><td><input class="inp" id="a-eb3" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td><td><input class="inp" id="a-eb4" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td><td><input class="inp" id="a-eb5" value="" oninput="rc()" style="width:60px;color:var(--tm)" placeholder="—"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ch"><canvas id="dash-ch" role="img" aria-label="Line chart comparing actual revenue and EBITDA against original entry plan over 5-year holding period"></canvas></div>
+</div>
+
+<!-- EBITDA BRIDGE TAB -->
+<div id="tb2" style="display:none">
+  <div class="g2">
+    <div>
+      <p class="sl">Value creation drivers (entry → current, BWP M)</p>
+      <div class="co" style="margin-bottom:12px">
+        <div class="fl"><label>Entry EBITDA (auto-filled from Dashboard)</label><input class="inp" id="b-ent" value="90" oninput="rc()" disabled style="opacity:.5"></div>
+        <div class="fl"><label>+ Volume / revenue growth</label><input class="inp" id="b-vol" value="22" oninput="rc()"></div>
+        <div class="fl"><label>+ Pricing improvement</label><input class="inp" id="b-prc" value="8" oninput="rc()"></div>
+        <div class="fl"><label>+ Gross margin improvement</label><input class="inp" id="b-mgn" value="5" oninput="rc()"></div>
+        <div class="fl"><label>+ SG&A efficiency / overhead reduction</label><input class="inp" id="b-sga" value="7" oninput="rc()"></div>
+        <div class="fl"><label>− Headwinds (inflation, supply chain, FX)</label><input class="inp" id="b-hdw" value="24" oninput="rc()"></div>
+      </div>
+      <div id="bridge-summary" style="background:var(--s0);border:.5px solid var(--ba);border-radius:var(--rr);border-left:2px solid var(--ta);padding:12px 14px"></div>
+    </div>
+    <div>
+      <p class="sl">EBITDA waterfall (BWP M)</p>
+      <div class="ch"><canvas id="bridge-ch" role="img" aria-label="Waterfall chart showing EBITDA bridge from entry to current with value creation components and headwinds"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUE CREATION TAB -->
+<div id="tv" style="display:none">
+  <p class="sl">Value creation scorecard — edit any lever</p>
+  <div style="overflow-x:auto">
+    <table class="ft" id="vc-tbl">
+      <thead><tr><th class="l" style="min-width:170px">Value creation lever</th><th>Current</th><th>Target</th><th>Unit</th><th>Status</th><th style="min-width:120px">Progress</th><th>Trend</th></tr></thead>
+      <tbody id="vc-tbody"></tbody>
+    </table>
+  </div>
+  <div id="vc-summary" style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px"></div>
+</div>
+
+<!-- EXIT READINESS TAB -->
+<div id="tx" style="display:none">
+  <div class="g2">
+    <div>
+      <p class="sl">Exit targets</p>
+      <div class="co" style="margin-bottom:12px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="fl"><label>Target exit year</label><input class="inp" id="x-yr" value="2027" oninput="rc()"></div>
+          <div class="fl"><label>Exit EV multiple (×EBITDA)</label><input class="inp" id="x-em" value="7.0" oninput="rc()"></div>
+          <div class="fl"><label>Target revenue (BWP M)</label><input class="inp" id="x-rv" value="661" oninput="rc()"></div>
+          <div class="fl"><label>Target EBITDA (BWP M)</label><input class="inp" id="x-eb" value="165" oninput="rc()"></div>
+          <div class="fl"><label>Net debt at exit (BWP M)</label><input class="inp" id="x-nd" value="280" oninput="rc()"></div>
+          <div class="fl"><label>Exit EBITDA margin target (%)</label><input class="inp" id="x-mg" value="25.0" oninput="rc()"></div>
+        </div>
+      </div>
+      <div id="exit-summary" style="background:var(--s0);border:.5px solid var(--bd);border-radius:var(--rr);padding:13px"></div>
+    </div>
+    <div>
+      <p class="sl">KPI progress toward exit targets</p>
+      <div id="exit-bars"></div>
+      <div style="margin-top:14px" id="return-attr"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AI TAB -->
+<div id="tai" style="display:none">
+  <div class="g2">
+    <div>
+      <p class="sl">Board pack summary generator</p>
+      <p style="font-size:12.5px;color:var(--t2);margin:0 0 12px;line-height:1.6">Claude writes a quarterly PE board pack summary covering performance, value creation progress, risks, and management actions.</p>
+      <button class="aib" id="mbtn" onclick="genAnalysis()">✦ Generate board pack summary</button>
+      <div id="mout" class="mob"></div>
+    </div>
+    <div>
+      <p class="sl">Ask Claude</p>
+      <textarea class="qin" id="qin" placeholder="e.g. What are the top 3 value creation priorities for the next 12 months?&#10;Is revenue miss a structural or timing issue?&#10;How should management address the working capital lag?"></textarea>
+      <button class="aib" id="abtn" onclick="askC()" style="margin-top:8px">Ask Claude</button>
+      <div id="qaout" style="margin-top:12px;max-height:300px;overflow-y:auto"></div>
+    </div>
+  </div>
+  <div style="margin-top:16px;padding-top:13px;border-top:.5px solid var(--bd)">
+    <p class="sl" style="margin-bottom:8px">Quick prompts</p>
+    <div style="display:flex;flex-wrap:wrap;gap:7px">
+      <button class="qkb" onclick="qa('What are the top 3 value creation priorities management should focus on to close the gap to plan?')">Top priorities</button>
+      <button class="qkb" onclick="qa('Is the revenue miss vs. plan a structural problem or timing? What evidence supports each view?')">Revenue miss diagnosis</button>
+      <button class="qkb" onclick="qa('What M&A or bolt-on acquisitions could accelerate the value creation plan in SADC?')">Bolt-on strategy</button>
+      <button class="qkb" onclick="qa('Write a 3-sentence executive update for the LP quarterly report on this portfolio company.')">LP update</button>
+      <button class="qkb" onclick="qa('Is exit in Year 5 achievable at the target multiple? What needs to go right?')">Exit achievability</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const CH={},g=id=>document.getElementById(id),nv=id=>parseFloat(g(id)?.value)||0;
+const f=(v,d=1)=>(isNaN(v)||!isFinite(v))?'—':v.toFixed(d);
+const fp=v=>(isNaN(v)||!isFinite(v))?'—':(v*100).toFixed(1)+'%';
+let ST={};
+const CO={tx:'#7090b8',gr:'#141e3a',b:'#2a78d6',g:'#1ec87a',a:'#c9a453',r:'#e04040',v:'#4a3aa7'};
+function kc(id){if(CH[id]){CH[id].destroy();delete CH[id];}}
+
+const VC_DEF=[
+  {nm:'Revenue growth (CAGR)',cv:'6.7',tv:'8.0',un:'%',inv:false},
+  {nm:'EBITDA margin',cv:'21.1',tv:'23.0',un:'%',inv:false},
+  {nm:'Gross margin',cv:'42.5',tv:'42.0',un:'%',inv:false},
+  {nm:'SG&A (% of revenue)',cv:'13.2',tv:'13.5',un:'%',inv:true},
+  {nm:'Working capital (DSO)',cv:'58',tv:'52',un:'days',inv:true},
+  {nm:'Capex (% of revenue)',cv:'4.8',tv:'5.0',un:'%',inv:true},
+  {nm:'ROIC',cv:'14.2',tv:'16.0',un:'%',inv:false},
+  {nm:'Market share',cv:'18.2',tv:'20.0',un:'%',inv:false}
+];
+
+function initVC(){
+  const tb=g('vc-tbody');
+  tb.innerHTML=VC_DEF.map((l,i)=>`<tr>
+    <td class="l" style="padding:5px 8px"><input class="inp l" id="v${i}-nm" value="${l.nm}" oninput="rc()" style="width:155px"></td>
+    <td style="padding:5px 8px"><input class="inp" id="v${i}-cv" value="${l.cv}" oninput="rc()" style="width:56px"></td>
+    <td style="padding:5px 8px"><input class="inp" id="v${i}-tv" value="${l.tv}" oninput="rc()" style="width:56px"></td>
+    <td style="padding:5px 8px;color:var(--t2);font-family:var(--mn);font-size:11px">${l.un}</td>
+    <td style="padding:5px 8px" id="v${i}-status"></td>
+    <td style="padding:5px 8px;min-width:110px"><div class="pbar" id="v${i}-bar"><div class="pbar-fill" id="v${i}-fill"></div></div><div style="font-size:10px;color:var(--tm);font-family:var(--mn);margin-top:2px" id="v${i}-pct"></div></td>
+    <td style="padding:5px 8px">
+      <select class="inp" id="v${i}-tr" onchange="rc()" style="width:54px;height:24px;font-size:11px">
+        <option value="up">↑</option><option value="flat" ${i===3||i===4?'selected':''}>→</option><option value="dn">↓</option>
+      </select>
+    </td>
+  </tr>`).join('');
+}
+
+function vcStatus(cv,tv,inv){
+  if(inv){
+    const r=tv>0?cv/tv:1;
+    if(r<=1.05)return'g';if(r<=1.2)return'a';return'r';
+  }else{
+    const r=tv>0?cv/tv:0;
+    if(r>=0.95)return'g';if(r>=0.8)return'a';return'r';
+  }
+}
+function vcPct(cv,tv,inv){
+  if(tv===0)return 0;
+  return inv?Math.max(0,Math.min(1,tv/cv)):Math.max(0,Math.min(1,cv/tv));
+}
+
+function rc(){
+  const nm=g('c-nm').value;
+  const eRv=nv('e-rv'),eEb=nv('e-eb'),eEv=nv('e-ev'),eEq=nv('e-eq');
+  const eYr=parseInt(g('e-yr').value)||2022;
+  const cYr=parseInt(g('c-yr').value)||2024;
+  const hYrs=Math.max(0,cYr-eYr);
+  const xYr=parseInt(g('x-yr').value)||2027;
+  const xEb=nv('x-eb'),xEm=nv('x-em'),xNd=nv('x-nd'),xRv=nv('x-rv'),xMg=nv('x-mg');
+  const xEV=xEb*xEm,xEq=Math.max(0,xEV-xNd);
+
+  const pRv=[nv('p-rv0'),nv('p-rv1'),nv('p-rv2'),nv('p-rv3'),nv('p-rv4'),nv('p-rv5')];
+  const pEb=[nv('p-eb0'),nv('p-eb1'),nv('p-eb2'),nv('p-eb3'),nv('p-eb4'),nv('p-eb5')];
+  const aRv=[nv('a-rv0'),nv('a-rv1'),nv('a-rv2'),nv('a-rv3'),nv('a-rv4'),nv('a-rv5')];
+  const aEb=[nv('a-eb0'),nv('a-eb1'),nv('a-eb2'),nv('a-eb3'),nv('a-eb4'),nv('a-eb5')];
+
+  const currRv=aRv[hYrs]||pRv[hYrs]||eRv;
+  const currEb=aEb[hYrs]||pEb[hYrs]||eEb;
+  const currMg=currRv>0?currEb/currRv:0;
+  const entMg=eRv>0?eEb/eRv:0;
+  const rvCAGR=hYrs>0&&eRv>0?Math.pow(currRv/eRv,1/hYrs)-1:0;
+  const ebCAGR=hYrs>0&&eEb>0?Math.pow(currEb/eEb,1/hYrs)-1:0;
+
+  const entMult=eEb>0?eEv/eEb:6.5;
+  const mktEV=currEb*entMult;
+  const estDebt=Math.max(0,(eEv-eEq)*(1-hYrs*0.12));
+  const currEqVal=Math.max(0,mktEV-estDebt);
+  const irrTD=hYrs>0&&eEq>0?Math.pow(currEqVal/eEq,1/hYrs)-1:0;
+  const totalYrs=xYr-eYr;
+  const exitIRR=totalYrs>0&&eEq>0&&xEq>0?Math.pow(xEq/eEq,1/totalYrs)-1:0;
+  const mthsLeft=(xYr-cYr)*12;
+
+  ST={nm,eRv,eEb,eEv,eEq,eYr,cYr,hYrs,xYr,xEb,xEm,xNd,xRv,xMg,xEV,xEq,pRv,pEb,aRv,aEb,currRv,currEb,currMg,entMg,rvCAGR,ebCAGR,currEqVal,irrTD,exitIRR,mthsLeft,totalYrs,entMult};
+
+  g('dsb').textContent=`${nm}  ·  Entry ${eYr}  ·  Year ${hYrs} of hold  ·  Rev CAGR ${fp(rvCAGR)}  ·  EBITDA margin ${fp(currMg)}  ·  Target exit ${xYr}`;
+
+  g('kbar').innerHTML=[
+    {l:`Revenue CAGR (${hYrs}yr)`,v:fp(rvCAGR),c:rvCAGR>=0.07?'gl':rvCAGR>=0.05?'':'rl'},
+    {l:'EBITDA margin (current)',v:fp(currMg),c:currMg>entMg?'gl':''},
+    {l:'vs. entry margin',v:(currMg-entMg>=0?'+':'')+f((currMg-entMg)*100,1)+'pp',c:currMg>=entMg?'gl':'rl'},
+    {l:'IRR to date (est.)',v:fp(irrTD),c:irrTD>=0.2?'gl':irrTD>=0.12?'':'rl'},
+    {l:'Months to exit',v:mthsLeft>0?`${mthsLeft}m`:'Exited',c:''}
+  ].map(k=>`<div class="kc ${k.c.includes('gl')?'gl':k.c.includes('rl')?'rl':''}"><div class="kv ${k.c.includes('gl')?'a':k.c.includes('rl')?'r':''}">${k.v}</div><div class="kl">${k.l}</div></div>`).join('');
+
+  // Snapshot panel
+  const planRv=pRv[hYrs]||eRv,planEb=pEb[hYrs]||eEb;
+  const rvVsPlan=planRv>0?(currRv-planRv)/planRv:0;
+  const ebVsPlan=planEb>0?(currEb-planEb)/planEb:0;
+  g('snap-panel').innerHTML=[
+    ['Current Revenue',`BWP ${f(currRv,0)}M`,rvVsPlan>=0?'var(--ts)':rvVsPlan>=-0.05?'var(--tw)':'var(--td)'],
+    ['vs. Year '+hYrs+' plan',`${rvVsPlan>=0?'+':''}${fp(rvVsPlan)}`,rvVsPlan>=0?'var(--ts)':'var(--td)'],
+    ['Current EBITDA',`BWP ${f(currEb,0)}M`,ebVsPlan>=0?'var(--ts)':ebVsPlan>=-0.05?'var(--tw)':'var(--td)'],
+    ['vs. Year '+hYrs+' plan',`${ebVsPlan>=0?'+':''}${fp(ebVsPlan)}`,ebVsPlan>=0?'var(--ts)':'var(--td)'],
+    ['EBITDA margin',`${fp(currMg)} (entry: ${fp(entMg)})`,currMg>entMg?'var(--ts)':'var(--td)'],
+    ['Entry EV / EBITDA',`${f(entMult,1)}× → current EV est. BWP ${f(mktEV,0)}M`,'var(--tt)']
+  ].map(([l,v,c])=>`<div style="display:flex;justify-content:space-between;border-bottom:.5px solid var(--bd);padding:3px 0"><span style="color:var(--t2);font-size:11.5px">${l}</span><span style="font-family:var(--mn);font-size:12px;color:${c}">${v}</span></div>`).join('');
+
+  // Dashboard chart
+  kc('dash-ch');const dce=g('dash-ch');
+  if(dce){
+    const yrs=['Entry',...Array.from({length:5},(_,i)=>`Yr ${i+1}`)];
+    const planRvD=pRv,planEbD=pEb;
+    const actRvD=aRv.map(v=>v||null),actEbD=aEb.map(v=>v||null);
+    CH['dash-ch']=new Chart(dce,{type:'line',data:{labels:yrs,datasets:[
+      {label:'Revenue Plan',data:planRvD,borderColor:CO.b,borderDash:[6,3],borderWidth:1.5,pointRadius:3,tension:.3,backgroundColor:'transparent'},
+      {label:'Revenue Actual',data:actRvD,borderColor:CO.b,borderWidth:2.5,pointRadius:5,tension:.3,backgroundColor:CO.b+'22'},
+      {label:'EBITDA Plan',data:planEbD,borderColor:CO.a,borderDash:[6,3],borderWidth:1.5,pointRadius:3,tension:.3,backgroundColor:'transparent'},
+      {label:'EBITDA Actual',data:actEbD,borderColor:CO.a,borderWidth:2.5,pointRadius:5,tension:.3,backgroundColor:CO.a+'22'}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{font:{size:11},color:CO.tx,boxWidth:10,boxHeight:10,padding:12}}},scales:{x:{grid:{color:CO.gr},ticks:{color:CO.tx,font:{size:11}}},y:{grid:{color:CO.gr},ticks:{color:CO.tx,font:{size:11},callback:v=>`BWP ${v}M`}}}}});
+  }
+
+  // EBITDA Bridge
+  const bEnt=eEb,bVol=nv('b-vol'),bPrc=nv('b-prc'),bMgn=nv('b-mgn'),bSga=nv('b-sga'),bHdw=nv('b-hdw');
+  const b1=bEnt+bVol,b2=b1+bPrc,b3=b2+bMgn,b4=b3+bSga,b5=b4-bHdw;
+  if(g('b-ent'))g('b-ent').value=bEnt;
+  g('bridge-summary').innerHTML=`<p class="sl" style="margin-bottom:7px">Bridge summary</p>`+[
+    ['Entry EBITDA',`BWP ${f(bEnt,0)}M`,'var(--t2)'],
+    ['Value creation (gross)',`+BWP ${f(bVol+bPrc+bMgn+bSga,0)}M`,'var(--ts)'],
+    ['Headwinds',`−BWP ${f(bHdw,0)}M`,'var(--td)'],
+    ['Bridge total (estimated)',`BWP ${f(b5,0)}M`,'var(--ta)'],
+    ['Actual current EBITDA',`BWP ${f(currEb,0)}M`,'var(--tt)'],
+    ['Bridge vs. actual',`${f(Math.abs(b5-currEb),0)}M ${b5>=currEb?'model > actual':'model < actual'}`,'var(--tm)']
+  ].map(([l,v,c])=>`<div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:11.5px;color:var(--t2)">${l}</span><span style="font-family:var(--mn);font-size:12px;color:${c}">${v}</span></div>`).join('');
+
+  kc('bridge-ch');const bce=g('bridge-ch');
+  if(bce){
+    const lbs=['Entry','Volume','Pricing','Gross margin','SG&A','Headwinds','Current'];
+    const dt=[[0,bEnt],[bEnt,b1],[b1,b2],[b2,b3],[b3,b4],[b5,b4],[0,b5]];
+    const bgs=[CO.r,CO.g,CO.g,CO.g,CO.g,CO.r+'cc',CO.a];
+    CH['bridge-ch']=new Chart(bce,{type:'bar',data:{labels:lbs,datasets:[{data:dt,backgroundColor:bgs,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const[lo,hi]=ctx.raw;return`BWP ${Math.abs(hi-lo).toFixed(1)}M`;}}}},scales:{x:{grid:{display:false},ticks:{color:CO.tx,font:{size:11}}},y:{grid:{color:CO.gr},ticks:{color:CO.tx,font:{size:11},callback:v=>`${v}M`}}}}});
+  }
+
+  // Value creation scorecard
+  let onTrack=0,atRisk=0,behind=0;
+  VC_DEF.forEach((_,i)=>{
+    const cv=parseFloat(g(`v${i}-cv`)?.value)||0,tv=parseFloat(g(`v${i}-tv`)?.value)||0;
+    const inv=VC_DEF[i].inv,st=vcStatus(cv,tv,inv),pct=vcPct(cv,tv,inv);
+    const el=g(`v${i}-status`);
+    if(el)el.innerHTML=`<span class="rag-${st}">${st==='g'?'ON TRACK':st==='a'?'AT RISK':'BEHIND'}</span>`;
+    const fill=g(`v${i}-fill`);
+    if(fill){fill.style.width=`${pct*100}%`;fill.style.background=st==='g'?CO.g:st==='a'?CO.a:CO.r;}
+    const pctEl=g(`v${i}-pct`);if(pctEl)pctEl.textContent=`${(pct*100).toFixed(0)}% of target`;
+    if(st==='g')onTrack++;else if(st==='a')atRisk++;else behind++;
+  });
+  g('vc-summary').innerHTML=[
+    {l:'On Track',v:onTrack,c:'var(--ts)',bg:'rgba(30,200,122,.08)'},
+    {l:'At Risk',v:atRisk,c:'var(--tw)',bg:'rgba(232,160,32,.08)'},
+    {l:'Behind',v:behind,c:'var(--td)',bg:'rgba(224,64,64,.08)'}
+  ].map(k=>`<div style="background:${k.bg};border-radius:var(--rr);padding:14px;text-align:center"><div style="font-size:32px;font-weight:300;font-family:var(--mn);color:${k.c}">${k.v}</div><div style="font-size:10px;color:var(--tm);margin-top:4px;letter-spacing:.06em;font-family:var(--mn);text-transform:uppercase">${k.l}</div></div>`).join('');
+
+  // Exit readiness
+  const xTargets=[{l:'Revenue (BWP M)',curr:currRv,tgt:xRv},{l:'EBITDA (BWP M)',curr:currEb,tgt:xEb},{l:'EBITDA Margin',curr:currMg*100,tgt:xMg},{l:'Implied EV (BWP M)',curr:mktEV,tgt:xEV}];
+  g('exit-bars').innerHTML=xTargets.map(({l,curr,tgt})=>{
+    const pct=tgt>0?Math.min(1,curr/tgt):0;
+    const col=pct>=0.85?CO.g:pct>=0.65?CO.a:CO.r;
+    return`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px"><span style="color:var(--t2)">${l}</span><span style="font-family:var(--mn);color:var(--tt)">${f(curr,1)} / ${f(tgt,1)}</span></div><div class="pbar"><div class="pbar-fill" style="width:${pct*100}%;background:${col}"></div></div><div style="font-size:10px;color:var(--tm);margin-top:2px;font-family:var(--mn)">${(pct*100).toFixed(0)}% of exit target</div></div>`;
+  }).join('');
+
+  const ebitdaGrowthRet=eEb>0?(xEb-eEb)*xEm:0;
+  const multExpansion=xEm>entMult?xEb*(xEm-entMult):0;
+  const debtPaydown=(eEv-eEq)-xNd;
+  g('return-attr').innerHTML=`<p class="sl" style="margin-bottom:8px">Return attribution (BWP M)</p>`+[
+    ['EBITDA growth × entry multiple',`+BWP ${f(ebitdaGrowthRet,0)}M`,CO.g],
+    ['Multiple expansion (entry → exit)',`${multExpansion>=0?'+':''}BWP ${f(multExpansion,0)}M`,multExpansion>=0?CO.g:CO.r],
+    ['Debt paydown',`+BWP ${f(Math.max(0,debtPaydown),0)}M`,CO.b],
+    ['Exit equity (est.)',`BWP ${f(xEq,0)}M`,CO.a],
+    ['Entry equity',`BWP ${f(eEq,0)}M`,'#777'],
+    ['Target total IRR',`${fp(exitIRR)} (${totalYrs}yr)`,exitIRR>=0.2?CO.g:exitIRR>=0.12?CO.a:CO.r]
+  ].map(([l,v,c])=>`<div style="display:flex;justify-content:space-between;border-bottom:.5px solid var(--bd);padding:5px 0"><span style="font-size:11.5px;color:var(--t2)">${l}</span><span style="font-family:var(--mn);font-size:12px;color:${c}">${v}</span></div>`).join('');
+
+  g('exit-summary').innerHTML=`<p class="sl" style="margin-bottom:7px">Exit scenario</p>`+[
+    [`Exit year`,xYr],['Total hold',`${totalYrs} years`],['Target EBITDA',`BWP ${f(xEb,0)}M`],[`Exit multiple`,`${f(xEm,1)}×`],['Implied exit EV',`BWP ${f(xEV,0)}M`],['Est. equity proceeds',`BWP ${f(xEq,0)}M`],['Target IRR',fp(exitIRR)]
+  ].map(([l,v])=>`<div style="display:flex;justify-content:space-between;border-bottom:.5px solid var(--bd);padding:4px 0"><span style="font-size:11.5px;color:var(--t2)">${l}</span><span style="font-family:var(--mn);font-size:12px;color:var(--tt)">${v}</span></div>`).join('');
+}
+
+function showTab(id,btn){
+  ['d','b2','v','x','ai'].forEach(t=>{const e=g(`t${t}`);if(e)e.style.display=t===id?'':'none';});
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');
+}
+
+function pCtx(){const s=ST;return `PORTFOLIO CO: ${s.nm} | Acquired: ${s.eYr} | Now: ${s.cYr} (Year ${s.hYrs} of hold) | Exit target: ${s.xYr}\nEntry: EV BWP ${f(s.eEv,0)}M | Equity BWP ${f(s.eEq,0)}M | Rev BWP ${f(s.eRv,0)}M | EBITDA BWP ${f(s.eEb,0)}M (${fp(s.entMg)})\nCurrent: Rev BWP ${f(s.currRv,0)}M (CAGR ${fp(s.rvCAGR)}) | EBITDA BWP ${f(s.currEb,0)}M (margin ${fp(s.currMg)}) | Est equity value BWP ${f(s.currEqVal,0)}M | IRR to date: ${fp(s.irrTD)}\nExit plan: EBITDA BWP ${f(s.xEb,0)}M × ${f(s.xEm,1)}× = BWP ${f(s.xEV,0)}M EV | Target equity BWP ${f(s.xEq,0)}M | Target IRR: ${fp(s.exitIRR)}`;}
+
+async function apiCall(p){const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:p}]})});const d=await r.json();return d.content?.[0]?.text||'Error.';}
+async function genAnalysis(){
+  const btn=g('mbtn'),out=g('mout');btn.disabled=true;btn.innerHTML='<span class="spin">⟳</span> Generating…';out.style.display='none';
+  const p=`PE portfolio manager at AGWANE Capital. Write a quarterly board pack summary for this portfolio company.\n\n${pCtx()}\n\nStructure as:\n\nEXECUTIVE PERFORMANCE SUMMARY\nVALUE CREATION PROGRESS\nKEY RISKS & MANAGEMENT ACTIONS\nOUTLOOK & EXIT READINESS\n\n4 sections, ~100 words each. Professional PE board report tone. Botswana/SADC market context. No preamble.`;
+  try{out.textContent=await apiCall(p);}catch(e){out.textContent='Error connecting to Claude.';}
+  out.style.display='block';btn.disabled=false;btn.innerHTML='✦ Regenerate board summary';
+}
+async function askC(){
+  const btn=g('abtn'),qIn=g('qin'),out=g('qaout');const q=qIn.value.trim();if(!q)return;
+  btn.disabled=true;btn.innerHTML='<span class="spin">⟳</span>';
+  try{const ans=await apiCall(`PE portfolio manager at AGWANE Capital. Context: ${pCtx()}. Answer in 3-4 sentences with specific numbers.\n\nQ: ${q}`);
+    const c=document.createElement('div');c.className='qac';c.innerHTML=`<div class="qaq">${q}</div>${ans}`;out.prepend(c);qIn.value='';}
+  catch(e){const c=document.createElement('div');c.className='qac';c.textContent='Error.';out.prepend(c);}
+  btn.disabled=false;btn.innerHTML='Ask Claude';
+}
+function qa(q){g('qin').value=q;askC();}
+
+function exportXL(){
+  const s=ST;if(!s.nm)return;
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet([['AGWANE CAPITAL — PORTFOLIO PERFORMANCE'],[''],['Company',s.nm],['Entry Year',s.eYr],['Current Year',s.cYr],['Hold Period',s.hYrs+' years'],[''],['ENTRY VS CURRENT'],['',`Entry (${s.eYr})`,`Current (${s.cYr})`,'vs. Entry'],['Revenue (BWP M)',f(s.eRv,0),f(s.currRv,0),f((s.currRv-s.eRv)/s.eRv*100,1)+'%'],['EBITDA (BWP M)',f(s.eEb,0),f(s.currEb,0),f((s.currEb-s.eEb)/s.eEb*100,1)+'%'],['EBITDA Margin',fp(s.entMg),fp(s.currMg),''],[''],['RETURNS'],['IRR to Date (est.)',fp(s.irrTD)],['Target Exit IRR',fp(s.exitIRR)],[''],['EXIT PLAN'],['Target Exit Year',s.xYr],['Target EBITDA (BWP M)',f(s.xEb,0)],['Exit Multiple',f(s.xEm,1)+'x'],['Implied Exit EV (BWP M)',f(s.xEV,0)],['Est. Equity Proceeds (BWP M)',f(s.xEq,0)]]),'Summary');
+  const pvRows=[['Performance',s.eYr,...[1,2,3,4,5].map(i=>`${s.eYr+i}`)],['Revenue Plan (BWP M)',...s.pRv.map(v=>f(v,0))],['Revenue Actual (BWP M)',...s.aRv.map(v=>v?f(v,0):'—')],['EBITDA Plan (BWP M)',...s.pEb.map(v=>f(v,0))],['EBITDA Actual (BWP M)',...s.aEb.map(v=>v?f(v,0):'—')]];
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(pvRows),'Plan vs Actual');
+  XLSX.writeFile(wb,`${s.nm.replace(/\s+/g,'_')}_PortfolioPerf_AGWANE.xlsx`);
+}
+
+async function exportWD(){
+  const s=ST;if(!s.nm)return;
+  const btn=g('wbtn');btn.disabled=true;btn.textContent='Generating…';
+  const xe=t=>String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const NAV='1B3A5C',GOL='B8882E',WHI='FFFFFF',GRY='EEF2F8',ALT='F8F9FC';
+  const P=(text,{b=false,sz=22,col='333333',after=80,center=false}={})=>
+    `<w:p><w:pPr><w:jc w:val="${center?'center':'left'}"/><w:spacing w:after="${after}"/></w:pPr><w:r><w:rPr>${b?'<w:b/>':''}<w:sz w:val="${sz}"/><w:szCs w:val="${sz}"/><w:color w:val="${col}"/></w:rPr><w:t xml:space="preserve">${xe(text)}</w:t></w:r></w:p>`;
+  const PB=()=>`<w:p><w:r><w:br w:type="page"/></w:r></w:p>`;
+  const TC=(text,{w=2268,b=false,bg='',col='333333',right=false,sz=18}={})=>
+    `<w:tc><w:tcPr><w:tcW w:w="${w}" w:type="dxa"/>${bg?`<w:shd w:val="clear" w:color="auto" w:fill="${bg}"/>`:''}
+</w:tcPr><w:p><w:pPr><w:jc w:val="${right?'right':'left'}"/><w:spacing w:after="0"/></w:pPr><w:r><w:rPr>${b?'<w:b/>':''}<w:sz w:val="${sz}"/><w:szCs w:val="${sz}"/><w:color w:val="${col}"/></w:rPr><w:t xml:space="preserve">${xe(text)}</w:t></w:r></w:p></w:tc>`;
+  const TR=c=>`<w:tr>${c}</w:tr>`;
+  const TBL=(rows,tw=10080)=>`<w:tbl><w:tblPr><w:tblW w:w="${tw}" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:left w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:bottom w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:right w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:insideH w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/><w:insideV w:val="single" w:sz="4" w:space="0" w:color="CCCCCC"/></w:tblBorders></w:tblPr>${rows}</w:tbl>`;
+  let body='';
+  body+=P('◆  AGWANE CAPITAL',{b:true,sz:28,col:NAV,center:true,after:30});
+  body+=P('PORTFOLIO PERFORMANCE REPORT',{b:true,sz:36,col:NAV,center:true,after:30});
+  body+=P(xe(s.nm.toUpperCase()),{b:true,sz:28,col:GOL,center:true,after:30});
+  body+=P(`Year ${s.hYrs} of Hold  ·  ${s.eYr}–${s.xYr} Horizon  ·  ${new Date().toLocaleDateString('en-GB',{month:'long',year:'numeric'})}`,{sz:18,col:'888888',center:true,after:0});
+  body+=PB();
+  body+=P('1.  PERFORMANCE SUMMARY',{b:true,sz:26,col:NAV,after:100});
+  const snap=[['Entry Year',String(s.eYr)],['Current Year',String(s.cYr)],['Hold Period',`${s.hYrs} years`],['Entry Revenue',`BWP ${f(s.eRv,0)}M`],['Current Revenue',`BWP ${f(s.currRv,0)}M`],['Revenue CAGR',fp(s.rvCAGR)],['Entry EBITDA',`BWP ${f(s.eEb,0)}M (${fp(s.entMg)})`],['Current EBITDA',`BWP ${f(s.currEb,0)}M (${fp(s.currMg)})`],['Margin expansion',`+${f((s.currMg-s.entMg)*100,1)}pp`],['IRR to date (est.)',fp(s.irrTD)],['Target exit year',String(s.xYr)],['Target IRR',fp(s.exitIRR)]];
+  body+=TBL(TR(TC('Metric',{w:3600,b:true,bg:NAV,col:WHI,sz:18})+TC('Value',{w:6480,b:true,bg:NAV,col:WHI,sz:18}))+snap.map(([l,v],i)=>TR(TC(l,{w:3600,bg:i%2===0?GRY:ALT,sz:18})+TC(v,{w:6480,bg:i%2===0?GRY:ALT,sz:18,right:true}))).join(''));
+  body+=P(' ',{sz:8,after:80});
+  body+=P('2.  PLAN VS. ACTUAL (BWP M)',{b:true,sz:26,col:NAV,after:100});
+  const yw=[1800,1380,1380,1380,1380,1380,1380];
+  body+=TBL(TR(['Metric','Entry',`Yr 1`,`Yr 2`,`Yr 3`,`Yr 4`,`Yr 5`].map((h,i)=>TC(h,{w:yw[i],b:true,bg:NAV,col:WHI,sz:15,right:i>0})).join(''))+[
+    ['Rev Plan (M)',...s.pRv.map(v=>f(v,0))],
+    ['Rev Actual (M)',...s.aRv.map(v=>v?f(v,0):'—')],
+    ['EBITDA Plan (M)',...s.pEb.map(v=>f(v,0))],
+    ['EBITDA Actual (M)',...s.aEb.map(v=>v?f(v,0):'—')]
+  ].map(([l,...vs],ri)=>TR(TC(l,{w:yw[0],bg:ri%2===0?GRY:ALT,sz:15,b:ri>=2})+vs.map((v,ci)=>TC(v,{w:yw[ci+1],bg:ri%2===0?GRY:ALT,sz:15,right:true,b:ri>=2})).join(''))).join(''));
+  body+=P(' ',{after:40});
+  body+=P(`AGWANE Capital Inc.  ·  Confidential  ·  ${new Date().toLocaleDateString()}`,{sz:16,col:'AAAAAA',center:true,after:0});
+  const docXML=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${body}<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1080" w:right="1080" w:bottom="1080" w:left="1080"/></w:sectPr></w:body></w:document>`;
+  const ct=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/></Types>`;
+  const rr=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
+  const dr=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/></Relationships>`;
+  const st=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:rPrDefault></w:docDefaults><w:style w:type="paragraph" w:styleId="Normal"><w:name w:val="Normal"/></w:style></w:styles>`;
+  const se=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:settings xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:defaultTabStop w:val="720"/></w:settings>`;
+  try{
+    const zip=new JSZip();zip.file('[Content_Types].xml',ct);zip.folder('_rels').file('.rels',rr);
+    const word=zip.folder('word');word.file('document.xml',docXML);word.file('styles.xml',st);word.file('settings.xml',se);
+    word.folder('_rels').file('document.xml.rels',dr);
+    const blob=await zip.generateAsync({type:'blob'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;
+    a.download=`${s.nm.replace(/\s+/g,'_')}_PortfolioPerf_AGWANE.docx`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  }catch(e){alert('Error: '+e.message);}
+  btn.disabled=false;btn.innerHTML='↓ Word';
+}
+
+initVC();rc();
+</script>
